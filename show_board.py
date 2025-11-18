@@ -1,5 +1,6 @@
 import tkinter as tk
 import random
+
 CELL_SIZE = 32
 
 number_colors = {
@@ -13,6 +14,7 @@ number_colors = {
     7: "black",
     8: "gray"
 }
+
 def show_board(solver_results, exposed):
     root = tk.Tk()
     root.title("SAT-Assisted Minesweeper")
@@ -96,7 +98,7 @@ def show_board(solver_results, exposed):
             )
             lbl.grid(row=r, column=c, padx=1, pady=1)
             widgets[(r, c)] = lbl
-    # ---- buttons (smaller, tighter) ----
+            
     btn_frame = tk.Frame(root)
     btn_frame.grid(row=1, column=0, pady=5)
     tk.Button(btn_frame, text="Reveal Safe", width=12,

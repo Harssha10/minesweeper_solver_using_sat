@@ -6,7 +6,7 @@ def var_id(cell):
     return cell[0] * 9 + cell[1]+1
 
 def encode_equals(cnf, vars_list, k):
-    """Encode Σ vars_list == k into CNF"""
+    """Encode sum of vars_list == k into CNF"""
     n = len(vars_list)
     # At most k  → every (k+1)-subset cannot all be true
     for combo in combinations(vars_list, k+1):
@@ -18,8 +18,9 @@ def encode_equals(cnf, vars_list, k):
         cnf.append(list(combo))
     
 def normalize(test1):
-    if len(test1) == 1 and isinstance(test1[0], list):
-        test1 = test1[0]
+    print(len(test1))
+    # if len(test1) == 1 and isinstance(test1[0], list):
+    test1 = test1[0]
     print(*test1)
 
     fixed = []
@@ -30,9 +31,7 @@ def normalize(test1):
     return fixed
 
 def custom_sat(test1):
-
     raw_clauses = normalize(test1)
-
     # collect all variables
     all_cells = sorted({cell for group,_ in raw_clauses for cell in group})
     mapping = {cell: var_id(cell) for cell in all_cells}

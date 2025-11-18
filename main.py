@@ -5,5 +5,8 @@ from automation import debug_board
 
 Main_map,exposed_cells=debug_board()
 clauses=get_clauses(Main_map)
-results=custom_sat(clauses)
+results={}
+for i in clauses:
+    temp=custom_sat(clauses)
+    results.update(temp)
 show_board(results,exposed_cells)
